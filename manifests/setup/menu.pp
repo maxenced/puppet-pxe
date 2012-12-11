@@ -21,18 +21,18 @@ class pxe::setup::menu {
         template  => 'pxe/menu_default.erb';
     }
 
-#    pxe::menu::entry { 'Installations':
-#        file    => 'default',
-#        append  => 'pxelinux.cfg/menu_install',
-#    }
-
-#    pxe::menu { 'Operating System ($arch)':
-#        file  => 'menu_install',
-#    }
+    pxe::menu::entry { 'Installations':
+        file    => 'default',
+        append  => 'pxelinux.cfg/menu_install',
+    }
 
     pxe::menu::entry { 'Debian':
         file    => 'menu_install',
         append  => 'pxelinux.cfg/os_debian',
+    }
+
+    pxe::menu { 'Debian versions':
+	file    => 'os_debian'
     }
 
     pxe::menu::entry { 'Debian 6 squeeze amd64 Installation':
