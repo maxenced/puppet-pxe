@@ -28,4 +28,7 @@ class pxe::preseed {
     file { '/srv/www/preseed/wheezy.cfg':
         content => template('pxe/preseed.cfg.erb')
     }
+    file { '/srv/www/preseed/squeeze.cfg':
+        content => template('pxe/preseed.cfg.erb')
+    }
 }
