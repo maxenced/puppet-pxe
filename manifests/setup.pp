@@ -27,16 +27,22 @@ class pxe::setup {
         require => File[$::tftp_root]
     }
 
+    package { 'gzip':
+	ensure => present
+    }
+
     service { 'isc-dhcp-server':
-        ensure  => running,
-        enable  => true,
-        require => Package['isc-dhcp-server']
+        ensure    => running,
+        enable    => true,
+        hasstatus => true,
+        require   => Package['isc-dhcp-server']
     }
 
     service { 'tftpd-hpa':
-        ensure  => running,
-        enable  => true,
-        require => Package['tftpd-hpa']
+        ensure    => running,
+        enable    => true,
+        hasstatus => true,
+        require   => Package['tftpd-hpa']
     }
 
     file { '/etc/dhcp/dhcpd.conf':
