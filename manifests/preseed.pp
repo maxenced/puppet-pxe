@@ -13,9 +13,12 @@
 # Copyright 2012 Maxence Dunnewind
 #
 class pxe::preseed {
-    include nginx
-    nginx::vhost { 'preseed':
-        docroot => '/srv/www/preseed'
+    include apache
+    apache::vhost { "${::fqdn}":
+        priority   => '10',
+        vhost_name => "${::fqdn}",
+        port       => '80',
+        docroot    => '/srv/www/preseed'
     }
 
     file { '/srv/www/preseed':
