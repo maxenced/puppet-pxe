@@ -15,10 +15,11 @@
 class pxe::preseed {
     include apache
     apache::vhost { "${::fqdn}":
-        priority   => '10',
-        vhost_name => "${::fqdn}",
-        port       => '80',
-        docroot    => '/srv/www/preseed'
+        priority           => '10',
+        vhost_name         => "${::fqdn}",
+        port               => '80',
+        docroot            => '/srv/www/preseed',
+        configure_firewall => false
     }
 
     file { '/srv/www/preseed':
