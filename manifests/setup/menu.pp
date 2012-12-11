@@ -37,14 +37,14 @@ class pxe::setup::menu {
 
     pxe::menu::entry { 'Debian 6 squeeze amd64 Installation':
         file    => 'os_debian',
-        kernel  => 'images/debian/amd64/squeeze/squeeze',
-        append  => 'vga=791 initrd=images/debian/i386/squeeze/squeeze.gz',
+        kernel  => 'images/debian/squeeze/amd64/linux',
+        append  => 'vga=791 initrd=images/debian/squeeze/amd64/initrd.gz',
     }
 
     pxe::menu::entry { 'Debian 7 wheezy amd64 Installation':
         file    => 'os_debian',
-        kernel  => 'images/debian/amd64/wheezy/wheezy',
-        append  => 'vga=791 initrd=images/debian/i386/wheezy/wheezy.gz',
+        kernel  => 'images/debian/wheezy/amd64/linux',
+        append  => 'vga=791 initrd=images/debian/wheezy/amd64/initrd.gz',
     }
 
 }
