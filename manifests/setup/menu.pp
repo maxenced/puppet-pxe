@@ -1,6 +1,22 @@
 # == Class: pxe::setup::menu
 #
 # Create default menus
+# The menu are organized in 2 ways:
+# - pxe::menu will create a new file with name as title
+#   ex : pxe::menu { 'Debian OS':
+#           file => 'os_debian', #Will create os_debian
+#           root => 'menu_install', #Will reference the file in menu_install
+#        }
+#   will create a file os_debian with title 'Debian OS'
+# - pxe::menu::entry create a new entry in a file
+#     The file *must* be created with pxe::menu.
+#   ex : pxe::menu::entry { 'Squeeze':
+#        file => 'os_debian', #name of the file
+#        kernel => 'images/debian/release/arch/linux', #path to kernel
+#        append => 'initrd=images/debian/release/arch/initrd.gz' #path to initrd
+#   }
+#
+#  Note that default and menu_install files are defined automatically
 #
 # === Variables
 #
@@ -16,23 +32,9 @@ class pxe::setup::menu {
 
     include pxe
 
-    pxe::menu { 'Main Menu':
-        file      => 'default',
-        template  => 'pxe/menu_default.erb';
-    }
-
-    pxe::menu::entry { 'Installations':
-        file    => 'default',
-        append  => 'pxelinux.cfg/menu_install',
-    }
-
-    pxe::menu::entry { 'Debian':
-        file    => 'menu_install',
-        append  => 'pxelinux.cfg/os_debian',
-    }
-
-    pxe::menu { 'Debian versions':
-	file    => 'os_debian'
+    pxe::menu { 'Debian':
+        file    => 'os_debian',
+        root    => 'menu_install'
     }
 
     pxe::menu::entry { 'Debian 6 squeeze amd64 Installation':

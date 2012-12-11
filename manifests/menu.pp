@@ -8,24 +8,24 @@
 
 define pxe::menu (
   $file,
-  $back     = "Main Menu",
-  $append   = "pxelinux.cfg/default",
-  $template = "pxe/menu.erb",
-  $root     = "default",
+  $back     = 'Main Menu',
+  $append   = 'pxelinux.cfg/default',
+  $template = 'pxe/menu.erb',
+  $root     = 'default',
 ) {
 
   include concat::setup
 
   $tftp_root = $::pxe::tftp_root
-  $fullpath  = "$tftp_root/pxelinux.cfg"
+  $fullpath  = '$tftp_root/pxelinux.cfg'
 
   concat::fragment { "menu_${name}-header":
     order   => '00',
-    target  => "$fullpath/$file",
-    content => template("$template"),
+    target  => '$fullpath/$file',
+    content => template($template),
   }
 
-  concat { "$fullpath/$file": }
+  concat { '$fullpath/$file': }
 
   # If we are adding the root entry, then there is no need to reference this
   # from elsewhere.
