@@ -18,8 +18,14 @@
 # Copyright 2012 Maxence Dunnewind
 #
 class pxe::setup {
+
+    file { $::tftp_root:
+        ensure => directory
+    }
+
     package { ['isc-dhcp-server', 'tftpd-hpa']:
-        ensure => present
+        ensure  => present,
+        require => File[$::tftp_root]
     }
 
     service { 'isc-dhcp-server':
