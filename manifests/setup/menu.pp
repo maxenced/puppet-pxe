@@ -30,13 +30,9 @@ class pxe::setup::menu {
 #        file  => 'menu_install',
 #    }
 
-#    pxe::menu::entry { 'Debian':
-#        file    => 'menu_install',
-#        append  => 'pxelinux.cfg/os_debian',
-#    }
-
-    pxe::menu { 'Debian':
-        file  => 'os_debian',
+    pxe::menu::entry { 'Debian':
+        file    => 'menu_install',
+        append  => 'pxelinux.cfg/os_debian',
     }
 
     pxe::menu::entry { 'Debian 6 squeeze amd64 Installation':
