@@ -22,6 +22,12 @@ class pxe::preseed {
         configure_firewall => false
     }
 
+    file { '/srv/www':
+        ensure => directory,
+        owner  => 'www-data',
+        group  => 'www-data'
+    }
+
     file { '/srv/www/preseed':
         ensure => directory,
         owner  => 'www-data',
