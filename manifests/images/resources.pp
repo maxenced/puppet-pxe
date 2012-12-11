@@ -31,7 +31,7 @@ define pxe::images::resources (
 
   # Menu
   if !defined(Pxe::Menu["Main Menu"]) {
-    @pxe::menu { "Main Menu":
+    pxe::menu { "Main Menu":
         file     => "default",
         template => "pxe/menu_default.erb";
     }
@@ -44,7 +44,7 @@ define pxe::images::resources (
   }
 
   if ! defined(Pxe::Menu["$os_cap"]) {
-    @pxe::menu { "$os_cap":
+    pxe::menu { "$os_cap":
       file => "os_${os}",
       root => "menu_install",
     }
