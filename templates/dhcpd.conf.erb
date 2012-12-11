@@ -27,13 +27,13 @@ log (info, binary-to-ascii (16, 8, "-", hardware));
 
 shared-network bonfire {
     subnet 131.254.204.0 netmask 255.255.255.0 {
-        option domain-name            "${domain}"; 
-        option domain-name-servers    ${dns_servers};
+        option domain-name            "<%= domain %>"; 
+        option domain-name-servers    <%= dns_servers %>;
 #option ntp-servers            ntp.rennes.grid5000.fr;
-        option routers                ${router};
+        option routers                <%= router %>;
 
-        option domain-search-order    "${domain}";
-        next-server                   ${ipaddress};
+        option domain-search-order    "<%= domain %>";
+        next-server                   <%= ipaddress %>;
         filename                      "/pxelinux.0";
     }
     subnet 172.30.204.0 netmask 255.255.255.0 {

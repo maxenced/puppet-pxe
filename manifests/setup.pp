@@ -39,7 +39,7 @@ class pxe::setup {
         require => Package['tftpd-hpa']
     }
 
-    file { '/etc/dhpc/dhcpd.conf':
+    file { '/etc/dhcp/dhcpd.conf':
         ensure  => present,
         content => template('pxe/dhcpd.conf.erb'),
         require => Package['isc-dhcp-server'],
