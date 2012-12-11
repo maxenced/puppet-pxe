@@ -41,21 +41,21 @@ class pxe::setup {
 
     file { '/etc/dhpc/dhcpd.conf':
         ensure  => present,
-        source  => template('pxe/dhcpd.conf.erb'),
+        content => template('pxe/dhcpd.conf.erb'),
         require => Package['isc-dhcp-server'],
         notify  => Service['isc-dhcp-server']
     }
 
     file { '/etc/default/isc-dhcp-server':
         ensure  => present,
-        source  => template('pxe/isc-dhcp-server.default.erb'),
+        content => template('pxe/isc-dhcp-server.default.erb'),
         require => Package['isc-dhcp-server'],
         notify  => Service['isc-dhcp-server']
     }
 
     file { '/etc/default/tftpd-hpa':
         ensure  => present,
-        source  => template('pxe/tftpd-hpa.default.erb'),
+        content => template('pxe/tftpd-hpa.default.erb'),
         require => Package['tftpd-hpa'],
         notify  => Service['tftpd-hpa']
     }
