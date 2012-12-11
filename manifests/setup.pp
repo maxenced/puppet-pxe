@@ -59,4 +59,7 @@ class pxe::setup {
         require => Package['tftpd-hpa'],
         notify  => Service['tftpd-hpa']
     }
+
+    include pxe::setup::menu
+    include pxe::setup::debian
 }
