@@ -47,7 +47,6 @@ define pxe::menu::entry (
   $file_string   = inline_template($file)
   $label_string  = inline_template($label)
 
-  $append_full = ''
   if $preseed != '' {
       $append_full = "${append} auto=true priority=critical url=http://${::fqdn}/${preseed} interface=eth0"
   }
