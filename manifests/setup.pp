@@ -5,7 +5,6 @@
 # === Variables
 # [*dhcp_interfaces*]
 # [*tftp_root*]
-# [*domain_name*]
 # [*dns_servers*]
 # [*router*]
 #
