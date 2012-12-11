@@ -47,10 +47,6 @@ define pxe::menu::entry (
   $file_string   = inline_template($file)
   $label_string  = inline_template($label)
 
-  if $preseed != '' {
-      $append_full = "${append} auto=true priority=critical url=http://${::fqdn}/${preseed} interface=eth0"
-  }
-
   concat::fragment { "${file_string}-menu-entry-${title}":
     order   => $order,
     target  => "${fullpath}/${file_string}",

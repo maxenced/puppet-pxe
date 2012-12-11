@@ -1,6 +1,6 @@
 LABEL <%= label_string %>
   KERNEL <%= kernel %>
 <% if append != '' -%>
-  APPEND <%= append_full %>
+  APPEND <%= append_full %> <% if preseed != '' %> auto=true priority=critical url=http://<%= fqdn %>/<%= preseed %> interface=eth0<% end %>
 <% end -%>
 

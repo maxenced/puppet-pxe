@@ -17,11 +17,11 @@ define pxe::menu (
   include concat::setup
 
   $tftp_root = $::pxe::tftp_root
-  $fullpath  = '$tftp_root/pxelinux.cfg'
+  $fullpath  = "$tftp_root/pxelinux.cfg"
 
   concat::fragment { "menu_${name}-header":
     order   => '00',
-    target  => '$fullpath/$file',
+    target  => "$fullpath/$file",
     content => template($template),
   }
 
