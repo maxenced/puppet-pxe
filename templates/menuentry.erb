@@ -1,6 +1,6 @@
 LABEL <%= label_string %>
   KERNEL <%= kernel %>
 <% if append != '' -%>
-  APPEND <%= append %> <% if preseed != '' %> auto=true priority=critical url=http://<%= fqdn %>/<%= preseed %> interface=eth0<% end %>
+  APPEND <%= append %> <% if preseed != '' %> auto=true priority=critical url=http://<%= fqdn %>/<%= preseed %> interface=eth0 keymap=us<% end %>
 <% end -%>
 
