@@ -145,6 +145,10 @@ d-i partman-auto/choose_recipe select custom
 # swap, and uses the rest of the space for the root partition:
 d-i partman-auto/expert_recipe string                         \
       custom ::                                               \
+        1024 1024 1024 ext3 $primary{ } $bootable{ } \
+        method{ format } format { } filesystem { ext3 } \
+        use_filesystem{ } mountpoint{ /boot } \
+        . \
         1024 1024 1024 linux-swap method{ swap } \
         format{ } $lvmok{ } lv_name{ swap } \
         . \
