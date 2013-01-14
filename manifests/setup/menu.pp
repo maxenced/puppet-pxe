@@ -51,4 +51,10 @@ class pxe::setup::menu {
         preseed => 'wheezy.cfg'
     }
 
+    pxe::menu::entry { 'Debian 7 wheezy amd64 Installation - no preseed':
+        file    => 'os_debian',
+        kernel  => 'images/debian/wheezy/amd64/linux',
+        append  => 'vga=791 initrd=images/debian/wheezy/amd64/initrd.gz',
+        preseed => ''
+    }
 }
