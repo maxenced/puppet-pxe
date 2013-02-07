@@ -68,4 +68,14 @@ class pxe::setup {
 
     include pxe::setup::menu
     include pxe::setup::debian
+
+    @@nagios_service { "check_pxe_dhcp_${::fqdn}":
+        check_command       => "check_ssh_process!1!3!dhcpd!${::ssh_port}",
+        service_description => "check_pxe_dhcp_${::fqdn}"
+    }
+
+    @@nagios_service { "check_pxe_tftp_${::fqdn}":
+        check_command       => "check_ssh_process!1!3!in.tftpd!${::ssh_port}",
+        service_description => "check_pxe_tftp_${::fqdn}"
+    }
 }
