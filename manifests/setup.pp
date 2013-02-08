@@ -28,7 +28,7 @@ class pxe::setup {
     }
 
     package { 'gzip':
-	ensure => present
+        ensure => present
     }
 
     service { 'isc-dhcp-server':
@@ -71,11 +71,17 @@ class pxe::setup {
 
     @@nagios_service { "check_pxe_dhcp_${::fqdn}":
         check_command       => "check_ssh_process!1!3!dhcpd!${::ssh_port}",
+        use                 => 'generic-service',
+        host_name           => $::fqdn,
+        notification_period => '24x7',
         service_description => "check_pxe_dhcp_${::fqdn}"
     }
 
     @@nagios_service { "check_pxe_tftp_${::fqdn}":
         check_command       => "check_ssh_process!1!3!in.tftpd!${::ssh_port}",
+        use                 => 'generic-service',
+        host_name           => $::fqdn,
+        notification_period => '24x7',
         service_description => "check_pxe_tftp_${::fqdn}"
     }
 }
