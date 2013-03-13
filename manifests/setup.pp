@@ -68,6 +68,7 @@ class pxe::setup {
 
     include pxe::setup::menu
     include pxe::setup::debian
+    include pxe::setup::centos
 
     @@nagios_service { "check_pxe_dhcp_${::fqdn}":
         check_command       => "check_ssh_process!1!3!dhcpd!${::ssh_port}",
