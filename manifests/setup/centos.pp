@@ -15,7 +15,7 @@
 class pxe::setup::centos {
     include pxe
     $centos = {
-        'arch' => ['amd64'],
+        'arch' => ['x86_64'],
         'ver'  => ['6.3'],
         'os'   => 'centos'
     }
