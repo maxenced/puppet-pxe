@@ -63,10 +63,10 @@ class pxe::setup::menu {
         root    => 'menu_install'
     }
 
-    pxe::menu::entry { 'CentOS 6.3 amd64 Installation':
+    pxe::menu::entry { 'CentOS 6.3 x86_64 Installation':
         file    => 'os_centos',
-        kernel  => 'images/centos/6.3/amd64/vmlinuz',
-        append  => 'vga=791 initrd=images/centos/6.3/amd64/initrd.img',
+        kernel  => 'images/centos/6.3/x86_64/vmlinuz',
+        append  => 'vga=791 initrd=images/centos/6.3/x86_64/initrd.img',
         preseed => ''
     }
 }
