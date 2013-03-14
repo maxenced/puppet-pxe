@@ -58,7 +58,7 @@ class pxe::setup::menu {
         preseed => ''
     }
 
-    pxe::menu { 'CentOS':
+    pxe::menu { 'Centos':
         file    => 'os_centos',
         root    => 'menu_install'
     }
